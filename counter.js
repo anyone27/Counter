@@ -1,46 +1,32 @@
-// let btnDecrease = document.getElementById("decrease");
-// let btnReset = document.getElementById("reset");
-// let btnIncrease = document.getElementById("increase");
-// let counter = document.getElementById("counter");
+let count = 0;
 
-var count = 0;
+const value = document.querySelector("#value");
+const btns = document.querySelectorAll(".btn");
 
-// btnReset.addEventListener("click", resetCounter);
-// btnDecrease.addEventListener("click", decreaseCounter);
-// btnIncrease.addEventListener("click", increaseCounter);
+console.log(btns);
 
-function resetCounter() {
-    count = 0;
-    console.log(count);
-    document.getElementById("value").innerHTML = count;
-    counterColour();
+btns.forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+        const styles = e.currentTarget.classList;
+        if (styles.contains('decrease')) {
+            count--;
+        }
+        else if (styles.contains('increase')) {
+            count++;
+        }
+        else {
+            count = 0;
+        }
+        if (count > 0) {
+            value.style.color = "green";
+        }
+        else if (count < 0) {
+            value.style.color = "red";
+        }
+        else {
+            value.style.color = "black";
+        }
+        value.textContent = count;
+    })
 
-}
-
-function increaseCounter() {
-    count++;
-    console.log(count);
-    document.getElementById("value").innerHTML = count;
-    counterColour();
-
-}
-
-function decreaseCounter() {
-    count--;
-    console.log(count);
-    document.getElementById("value").innerHTML = count;
-    counterColour();
-}
-
-
-function counterColour() {
-    if (count < 0) {
-        document.getElementById("value").style.color = "red";
-    }
-    else if (count > 0) {
-        document.getElementById("value").style.color = "green";
-    }
-    else {
-        document.getElementById("value").style.color = "black";
-    }
-}
+})

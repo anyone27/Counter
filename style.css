@@ -18,15 +18,15 @@ h1 {
     margin: 30px;
 }
 
-button {
+.btn {
     font-size: 15pt;
     margin: 10px;
 }
 
-#decrease {
+.decrease {
     color: red;
 }
 
-#increase {
+.increase {
     color: green;
 }
